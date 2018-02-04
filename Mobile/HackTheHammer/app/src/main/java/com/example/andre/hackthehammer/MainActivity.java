@@ -53,8 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Button takePictureButton;
     private ImageView imageView;
-    private TextView name, calorieValue, fatValue, sugarValue;
-    private TextView totalCalorieValue, totalFatValue, totalSugarValue;
+    private TextView name, calorieValue, fatValue, sugarValue, proteinValue, sodiumValue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,16 +74,16 @@ public class MainActivity extends AppCompatActivity {
         calorieValue = (TextView)findViewById(R.id.caloriesValue);
         fatValue = (TextView)findViewById(R.id.fatValue);
         sugarValue = (TextView)findViewById(R.id.sugarValue);
-
-        totalCalorieValue = (TextView)findViewById(R.id.totalCaloriesValue);
-        totalFatValue = (TextView)findViewById(R.id.totalFatValue);
-        totalSugarValue = (TextView)findViewById(R.id.totalSugarValue);
+        proteinValue = (TextView)findViewById(R.id.proteinValue);
+        sodiumValue = (TextView)findViewById(R.id.sodiumValue);
 
 
         name.setText("None Selected");
         calorieValue.setAlpha(0);
         fatValue.setAlpha(0);
         sugarValue.setAlpha(0);
+        proteinValue.setAlpha(0);
+        sodiumValue.setAlpha(0);
 
         takePictureButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -162,13 +161,16 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
-        //Total values
-        mDataBase.child("total-calories").addValueEventListener(new ValueEventListener() {
+        mDataBase.child("protein").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String data = dataSnapshot.getValue(String.class);
-                totalCalorieValue.setText(data);
+                if(imageView.getDrawable() != null){
+                    proteinValue.setText(data);
+                    proteinValue.setAlpha(1);
+                }else{
+                    proteinValue.setAlpha(0);
+                }
             }
 
             @Override
@@ -176,11 +178,16 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-        mDataBase.child("total-fat").addValueEventListener(new ValueEventListener() {
+        mDataBase.child("sodium").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String data = dataSnapshot.getValue(String.class);
-                totalFatValue.setText(data);
+                if(imageView.getDrawable() != null){
+                    sodiumValue.setText(data);
+                    sodiumValue.setAlpha(1);
+                }else{
+                    sodiumValue.setAlpha(0);
+                }
             }
 
             @Override
@@ -188,18 +195,8 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-        mDataBase.child("total-sugar").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                String data = dataSnapshot.getValue(String.class);
-                totalSugarValue.setText(data);
-            }
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
 
-            }
-        });
     }
 
     @Override
