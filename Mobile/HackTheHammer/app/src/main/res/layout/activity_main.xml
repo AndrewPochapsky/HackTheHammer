@@ -1,33 +1,175 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.andre.hackthehammer.MainActivity">
 
-    <android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
+    <ImageView
+        android:id="@+id/imageview"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+        android:layout_alignStart="@+id/button_image"
+        android:layout_below="@+id/button_image"
+        android:layout_marginTop="46dp"
+        android:background="@color/common_google_signin_btn_text_light_default"
+        android:padding="5dp" />
 
-    </android.support.design.widget.AppBarLayout>
+    <Button
+        android:id="@+id/button_image"
+        android:layout_width="300dp"
+        android:layout_height="75dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="41dp"
+        android:background="@android:color/white"
+        android:backgroundTint="@android:color/darker_gray"
+        android:elevation="22dp"
+        android:fontFamily="sans-serif-smallcaps"
+        android:text="Take picture and analyze"
+        android:textSize="23sp" />
 
-    <include layout="@layout/content_main" />
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
+    <TextView
+        android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+        android:layout_above="@+id/upperDiv"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="sans-serif-smallcaps"
+        android:text="Food Name"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
-</android.support.design.widget.CoordinatorLayout>
+    <TextView
+        android:id="@+id/caloriesHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/upperDiv"
+        android:layout_alignTop="@+id/upperDiv"
+        android:layout_marginTop="10dp"
+        android:fontFamily="sans-serif-smallcaps"
+        android:text="Calories:"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/caloriesValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/fatHeader"
+        android:layout_alignEnd="@+id/imageview"
+        android:layout_marginEnd="25dp"
+        android:fontFamily="sans-serif-smallcaps"
+        android:text="1000 calories"
+        android:textAlignment="center"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/fatHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/caloriesHeader"
+        android:layout_below="@+id/caloriesHeader"
+        android:fontFamily="sans-serif-smallcaps"
+        android:text="Fat:"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/fatValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/sugarHeader"
+        android:layout_alignStart="@+id/caloriesValue"
+        android:fontFamily="sans-serif-smallcaps"
+        android:text="9999"
+        android:textAlignment="center"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/sugarHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/fatHeader"
+        android:layout_below="@+id/fatHeader"
+        android:fontFamily="sans-serif-smallcaps"
+        android:text="Sugar:"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/sugarValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/sugarHeader"
+        android:layout_alignBottom="@+id/sugarHeader"
+        android:layout_alignStart="@+id/fatValue"
+        android:fontFamily="sans-serif-smallcaps"
+        android:text="9999"
+        android:textAlignment="center"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/proteinHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/sugarHeader"
+        android:layout_below="@+id/sugarHeader"
+        android:fontFamily="sans-serif-smallcaps"
+        android:text="Protein:"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/proteinValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/sugarValue"
+        android:layout_below="@+id/sugarValue"
+        android:fontFamily="sans-serif-smallcaps"
+        android:text="9999"
+        android:textAlignment="center"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/sodiumHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/proteinHeader"
+        android:layout_below="@+id/proteinHeader"
+        android:fontFamily="sans-serif-smallcaps"
+        android:text="Sodium:"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/sodiumValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/sodiumHeader"
+        android:layout_alignBottom="@+id/sodiumHeader"
+        android:layout_alignStart="@+id/proteinValue"
+        android:fontFamily="sans-serif-smallcaps"
+        android:text="9999"
+        android:textAlignment="center"
+        android:textSize="24sp" />
+
+    <View
+        android:id="@+id/upperDiv"
+        android:layout_width="300dp"
+        android:layout_height="1dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="245dp"
+        android:background="@android:color/darker_gray" />
+
+</RelativeLayout>
