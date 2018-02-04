@@ -75,8 +75,8 @@ var bucket = admin.storage().bucket();
 //                               CLARIFAI API
 //================================================================================================
 
-app.get("/index3", function(req, res) {
-    res.render("index3")
+app.get("/", function(req, res) {
+    res.redirect("/index");
 })
 
 // app.get("/visionTest", function(req,res){
