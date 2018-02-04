@@ -7,14 +7,9 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -50,29 +45,15 @@ public class MainActivity extends AppCompatActivity {
 
         mProgress = new ProgressDialog(this);
 
-        //StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
-        //StrictMode.setVmPolicy(builder.build());
-
         takePictureButton = (Button) findViewById(R.id.button_image);
         imageView = (ImageView) findViewById(R.id.imageview);
 
         takePictureButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                //startActivityForResult(intent, CAMERA_REQUEST_CODE);
                 dispatchTakePictureIntent();
             }
         });
-        /*
-        if(imageView.getDrawable() == null){
-            analyzeButton.setEnabled(false);
-        }
-        else{
-            analyzeButton.setEnabled(true);
-        }*/
-
-
     }
 
     @Override
@@ -82,7 +63,6 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == CAMERA_REQUEST_CODE && resultCode == RESULT_OK) {
             mProgress.setMessage("Uploading...");
             mProgress.show();
-            //Uri uri = data.getData();
 
             StorageReference filepath = mStorageRef.child(photoURI.getLastPathSegment());
             filepath.putFile(photoURI).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -90,8 +70,6 @@ public class MainActivity extends AppCompatActivity {
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                     Toast.makeText(MainActivity.this, "Upload Successful!", Toast.LENGTH_SHORT).show();
                     mProgress.dismiss();
-
-                    //Uri downloadUri = taskSnapshot.getDownloadUrl();
 
                     Picasso.with(MainActivity.this).load(photoURI).fit().centerCrop().into(imageView);
                 }

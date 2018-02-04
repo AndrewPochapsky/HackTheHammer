@@ -14,6 +14,7 @@
         android:layout_alignStart="@+id/button_image"
         android:layout_below="@+id/button_image"
         android:layout_marginTop="46dp"
+        android:background="@android:color/darker_gray"
         android:padding="5dp" />
 
     <Button
@@ -25,6 +26,91 @@
         android:layout_marginTop="41dp"
         android:text="Take picture and analyze"
         android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="244dp"
+        android:text="Food Name"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/caloriesHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/imageview"
+        android:layout_below="@+id/imageview"
+        android:layout_marginTop="70dp"
+        android:text="Calories:"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/caloriesValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/caloriesHeader"
+        android:layout_alignBottom="@+id/caloriesHeader"
+        android:layout_marginStart="12dp"
+        android:layout_toEndOf="@+id/name"
+        android:text="9999"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/fatHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/caloriesHeader"
+        android:layout_below="@+id/caloriesHeader"
+        android:layout_marginTop="9dp"
+        android:text="Fat:"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/fatValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/sugarHeader"
+        android:layout_alignStart="@+id/caloriesValue"
+        android:text="9999"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/sugarHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/fatHeader"
+        android:layout_below="@+id/fatHeader"
+        android:layout_marginTop="10dp"
+        android:text="Sugar:"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/sugarValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/sugarHeader"
+        android:layout_alignBottom="@+id/sugarHeader"
+        android:layout_alignStart="@+id/fatValue"
+        android:text="9999"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
 
 </RelativeLayout>
