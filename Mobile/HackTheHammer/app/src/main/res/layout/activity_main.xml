@@ -26,7 +26,7 @@
         android:layout_marginTop="41dp"
         android:fontFamily="sans-serif-smallcaps"
         android:text="Take picture and analyze"
-        android:textSize="20dp" />
+        android:textSize="23sp" />
 
     <TextView
         android:id="@+id/name"
@@ -128,7 +128,79 @@
         android:layout_height="1dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="130dp"
+        android:layout_marginBottom="140dp"
         android:background="@android:color/darker_gray" />
+
+    <TextView
+        android:id="@+id/totalCaloriesHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/sugarHeader"
+        android:layout_below="@+id/sugarHeader"
+        android:layout_marginTop="20dp"
+        android:fontFamily="sans-serif-smallcaps"
+        android:text="Total Calories:"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/totalCaloriesValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/totalCaloriesHeader"
+        android:layout_alignBottom="@+id/totalCaloriesHeader"
+        android:layout_alignEnd="@+id/lowerDiv"
+        android:layout_marginEnd="6dp"
+        android:fontFamily="sans-serif-smallcaps"
+        android:text="1000 Calories"
+        android:textAlignment="center"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/totalFatHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/totalCaloriesHeader"
+        android:layout_below="@+id/totalCaloriesHeader"
+        android:fontFamily="sans-serif-smallcaps"
+        android:text="Total Fat:"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/totalFatValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/totalCaloriesValue"
+        android:layout_below="@+id/totalCaloriesValue"
+        android:fontFamily="sans-serif-smallcaps"
+        android:text="9999 grams"
+        android:textAlignment="center"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/totalSugarHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/totalFatHeader"
+        android:layout_below="@+id/totalFatHeader"
+        android:fontFamily="sans-serif-smallcaps"
+        android:text="Total Sugar:"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/totalSugarValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/totalFatValue"
+        android:layout_below="@+id/totalFatValue"
+        android:fontFamily="sans-serif-smallcaps"
+        android:text="9999 grams"
+        android:textAlignment="center"
+        android:textSize="20sp" />
 
 </RelativeLayout>

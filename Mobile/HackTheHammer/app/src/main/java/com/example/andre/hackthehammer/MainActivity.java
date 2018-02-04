@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
     private Button takePictureButton;
     private ImageView imageView;
     private TextView name, calorieValue, fatValue, sugarValue;
+    private TextView totalCalorieValue, totalFatValue, totalSugarValue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +71,16 @@ public class MainActivity extends AppCompatActivity {
         calorieValue = (TextView)findViewById(R.id.caloriesValue);
         fatValue = (TextView)findViewById(R.id.fatValue);
         sugarValue = (TextView)findViewById(R.id.sugarValue);
+
+        totalCalorieValue = (TextView)findViewById(R.id.totalCaloriesValue);
+        totalFatValue = (TextView)findViewById(R.id.totalFatValue);
+        totalSugarValue = (TextView)findViewById(R.id.totalSugarValue);
+
+
+        name.setText("None Selected");
+        calorieValue.setAlpha(0);
+        fatValue.setAlpha(0);
+        sugarValue.setAlpha(0);
 
         takePictureButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -140,6 +151,44 @@ public class MainActivity extends AppCompatActivity {
                 }else{
                     sugarValue.setAlpha(0);
                 }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        //Total values
+        mDataBase.child("total-calories").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String data = dataSnapshot.getValue(String.class);
+                totalCalorieValue.setText(data);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+        mDataBase.child("total-fat").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String data = dataSnapshot.getValue(String.class);
+                totalFatValue.setText(data);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+        mDataBase.child("total-sugar").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String data = dataSnapshot.getValue(String.class);
+                totalSugarValue.setText(data);
             }
 
             @Override
