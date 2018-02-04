@@ -12,6 +12,9 @@ import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.RotateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -61,6 +64,8 @@ public class MainActivity extends AppCompatActivity {
         takePictureButton = (Button) findViewById(R.id.button_image);
         imageView = (ImageView) findViewById(R.id.imageview);
 
+        imageView.setRotation((float)90);
+
         name = (TextView)findViewById(R.id.name);
         calorieValue = (TextView)findViewById(R.id.caloriesValue);
         fatValue = (TextView)findViewById(R.id.fatValue);
@@ -72,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
                 dispatchTakePictureIntent();
             }
         });
+
         mDataBase.child("name").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {

@@ -15,7 +15,7 @@
         android:layout_below="@+id/button_image"
         android:layout_marginTop="46dp"
         android:background="@android:color/darker_gray"
-        android:padding="5dp" />
+        android:padding="5dp"/>
 
     <Button
         android:id="@+id/button_image"
