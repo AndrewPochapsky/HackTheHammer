@@ -24,6 +24,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="41dp"
+        android:fontFamily="sans-serif-smallcaps"
         android:text="Take picture and analyze"
         android:textSize="20dp" />
 
@@ -31,9 +32,9 @@
         android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_above="@+id/upperDiv"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="244dp"
+        android:fontFamily="sans-serif-smallcaps"
         android:text="Food Name"
         android:textAlignment="center"
         android:textAllCaps="false"
@@ -44,9 +45,10 @@
         android:id="@+id/caloriesHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/imageview"
-        android:layout_below="@+id/imageview"
-        android:layout_marginTop="70dp"
+        android:layout_alignStart="@+id/upperDiv"
+        android:layout_alignTop="@+id/upperDiv"
+        android:layout_marginTop="10dp"
+        android:fontFamily="sans-serif-smallcaps"
         android:text="Calories:"
         android:textAlignment="center"
         android:textSize="24sp"
@@ -56,14 +58,13 @@
         android:id="@+id/caloriesValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/caloriesHeader"
-        android:layout_alignBottom="@+id/caloriesHeader"
-        android:layout_marginStart="12dp"
-        android:layout_toEndOf="@+id/name"
-        android:text="9999"
+        android:layout_above="@+id/fatHeader"
+        android:layout_alignEnd="@+id/imageview"
+        android:layout_marginEnd="25dp"
+        android:fontFamily="sans-serif-smallcaps"
+        android:text="1000 calories"
         android:textAlignment="center"
-        android:textSize="24sp"
-        android:textStyle="bold" />
+        android:textSize="24sp" />
 
     <TextView
         android:id="@+id/fatHeader"
@@ -71,7 +72,7 @@
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/caloriesHeader"
         android:layout_below="@+id/caloriesHeader"
-        android:layout_marginTop="9dp"
+        android:fontFamily="sans-serif-smallcaps"
         android:text="Fat:"
         android:textAlignment="center"
         android:textSize="24sp"
@@ -83,10 +84,10 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/sugarHeader"
         android:layout_alignStart="@+id/caloriesValue"
+        android:fontFamily="sans-serif-smallcaps"
         android:text="9999"
         android:textAlignment="center"
-        android:textSize="24sp"
-        android:textStyle="bold" />
+        android:textSize="24sp" />
 
     <TextView
         android:id="@+id/sugarHeader"
@@ -94,7 +95,7 @@
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/fatHeader"
         android:layout_below="@+id/fatHeader"
-        android:layout_marginTop="10dp"
+        android:fontFamily="sans-serif-smallcaps"
         android:text="Sugar:"
         android:textAlignment="center"
         android:textSize="24sp"
@@ -107,10 +108,27 @@
         android:layout_alignBaseline="@+id/sugarHeader"
         android:layout_alignBottom="@+id/sugarHeader"
         android:layout_alignStart="@+id/fatValue"
+        android:fontFamily="sans-serif-smallcaps"
         android:text="9999"
         android:textAlignment="center"
-        android:textSize="24sp"
-        android:textStyle="bold" />
+        android:textSize="24sp" />
 
+    <View
+        android:id="@+id/upperDiv"
+        android:layout_width="300dp"
+        android:layout_height="1dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="245dp"
+        android:background="@android:color/darker_gray" />
+
+    <View
+        android:id="@+id/lowerDiv"
+        android:layout_width="300dp"
+        android:layout_height="1dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="130dp"
+        android:background="@android:color/darker_gray" />
 
 </RelativeLayout>

@@ -82,7 +82,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String data = dataSnapshot.getValue(String.class);
-                name.setText(data);
+                if(imageView.getDrawable() != null){
+                    name.setText(data);
+                }else{
+                    name.setText("None Selected");
+                }
             }
 
             @Override
@@ -94,7 +98,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String data = dataSnapshot.getValue(String.class);
-                calorieValue.setText(data);
+                if(imageView.getDrawable() != null){
+                    calorieValue.setText(data);
+                    calorieValue.setAlpha(1);
+                }else{
+                    calorieValue.setAlpha(0);
+                }
+
             }
 
             @Override
@@ -106,7 +116,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String data = dataSnapshot.getValue(String.class);
-                fatValue.setText(data);
+                if(imageView.getDrawable() != null){
+                    fatValue.setText(data);
+                    fatValue.setAlpha(1);
+                }else{
+                    fatValue.setAlpha(0);
+                }
+
             }
 
             @Override
@@ -118,7 +134,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String data = dataSnapshot.getValue(String.class);
-                sugarValue.setText(data);
+                if(imageView.getDrawable() != null){
+                    sugarValue.setText(data);
+                    sugarValue.setAlpha(1);
+                }else{
+                    sugarValue.setAlpha(0);
+                }
             }
 
             @Override
