@@ -14,8 +14,8 @@
         android:layout_alignStart="@+id/button_image"
         android:layout_below="@+id/button_image"
         android:layout_marginTop="46dp"
-        android:background="@android:color/darker_gray"
-        android:padding="5dp"/>
+        android:background="@color/common_google_signin_btn_text_light_default"
+        android:padding="5dp" />
 
     <Button
         android:id="@+id/button_image"
@@ -24,6 +24,9 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="41dp"
+        android:background="@android:color/white"
+        android:backgroundTint="@android:color/darker_gray"
+        android:elevation="22dp"
         android:fontFamily="sans-serif-smallcaps"
         android:text="Take picture and analyze"
         android:textSize="23sp" />

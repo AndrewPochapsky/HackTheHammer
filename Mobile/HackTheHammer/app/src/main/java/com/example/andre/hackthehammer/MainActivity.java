@@ -1,7 +1,10 @@
 package com.example.andre.hackthehammer;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.media.ThumbnailUtils;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -33,6 +36,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -40,7 +44,7 @@ import java.util.Date;
 import java.util.Queue;
 
 public class MainActivity extends AppCompatActivity {
-
+    int x = 100;
     private static final int CAMERA_REQUEST_CODE = 1;
     private StorageReference mStorageRef;
     private DatabaseReference mDataBase;
@@ -203,33 +207,57 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == CAMERA_REQUEST_CODE && resultCode == RESULT_OK) {
-            mProgress.setMessage("Uploading...");
-            mProgress.show();
+            //Bitmap bitmap = Bitmap.createBitmap(photoURI, 0, 0, 0, 0);
+            try{
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), photoURI);
+                mProgress.setMessage("Uploading...");
+                mProgress.show();
+                int dimension = getSquareCropDimensionForBitmap(bitmap);
+                bitmap = ThumbnailUtils.extractThumbnail(bitmap, dimension, dimension);
+                StorageReference filepath = mStorageRef.child(photoURI.getLastPathSegment());
+                Uri newUri = getImageUri(this, bitmap);
+                filepath.putFile(newUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        Toast.makeText(MainActivity.this, "Upload Successful!", Toast.LENGTH_SHORT).show();
+                        mProgress.dismiss();
 
-            StorageReference filepath = mStorageRef.child(photoURI.getLastPathSegment());
-            filepath.putFile(photoURI).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    Toast.makeText(MainActivity.this, "Upload Successful!", Toast.LENGTH_SHORT).show();
-                    mProgress.dismiss();
+                        Picasso.with(MainActivity.this).load(photoURI).fit().centerCrop().into(imageView);
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(MainActivity.this, "Upload Failed!", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }catch(IOException e){
 
-                    Picasso.with(MainActivity.this).load(photoURI).fit().centerCrop().into(imageView);
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(MainActivity.this, "Upload Failed!", Toast.LENGTH_SHORT).show();
-                }
-            });
+            }
+
+
         }
+    }
+
+    public Uri getImageUri(Context inContext, Bitmap inImage) {
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+        String path = MediaStore.Images.Media.insertImage(inContext.getContentResolver(), inImage, "Title", null);
+        return Uri.parse(path);
+    }
+
+    private int getSquareCropDimensionForBitmap(Bitmap bitmap)
+    {
+        //use the smallest dimension of the image to crop to
+        return Math.min(bitmap.getWidth(), bitmap.getHeight());
     }
 
     String mCurrentPhotoPath;
 
     private File createImageFile() throws IOException {
         // Create an image file name
-        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-        String imageFileName = "JPEG_" + timeStamp + "_";
+        //= new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        String imageFileName = x + "JPEG";
+        x++;
         File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
         File image = File.createTempFile(
                 imageFileName,  /* prefix */
