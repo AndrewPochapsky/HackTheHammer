@@ -18,7 +18,7 @@ var fs = require('fs');
 
 var   calories, 
       fat,  
-      sugar, 
+      sugar,
       protein,
       sodium,
       time;
@@ -26,7 +26,7 @@ var   calories,
 //                                     MONGODB 
 //================================================================================================
 
-mongoose.connect("mongodb://localhost/foodapp"); 
+mongoose.connect("mongodb://kartik34:kartiksinghal14@ds225078.mlab.com:25078/hackthehammer"); 
 
 var foodSchema = new mongoose.Schema({
     name: String, 
