@@ -26,7 +26,7 @@ var   calories,
 //                                     MONGODB 
 //================================================================================================
 
-mongoose.connect("mongodb://kartik34:kartiksinghal14@ds225078.mlab.com:25078/hackthehammer"); 
+mongoose.connect("mongodb://kartik34:kartik34@ds225078.mlab.com:25078/hackthehammer"); 
 
 var foodSchema = new mongoose.Schema({
     name: String, 
