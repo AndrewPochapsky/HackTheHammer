@@ -23,11 +23,12 @@ var   calories,
       sodium,
       time;
 //================================================================================================
-//                                     MONGODB 
+//             mongoose.connect("mongodb://localhost/foodapp"); 
+                    
 //================================================================================================
 
-mongoose.connect("mongodb://kartik34:kartik34@ds225038.mlab.com:25038/hackthehammer"); 
-
+mongoose.connect("mongodb://localhost/foodapp"); 
+mongodb://kartik34:kartik@ds225078.mlab.com:25078/hackthehammer
 var foodSchema = new mongoose.Schema({
     name: String, 
     calories: Number, 
@@ -75,8 +76,8 @@ var bucket = admin.storage().bucket();
 //                               CLARIFAI API
 //================================================================================================
 
-app.get("/", function(req, res) {
-    res.redirect("/index");
+app.get("/index3", function(req, res) {
+    res.render("index3")
 })
 
 // app.get("/visionTest", function(req,res){
@@ -85,7 +86,10 @@ app.get("/", function(req, res) {
 // })
 var name; 
 time = moment().subtract(5, 'hours').format('H:mm:ss')
-
+function round(value, precision) {
+    var multiplier = Math.pow(10, precision || 0);
+    return Math.round(value * multiplier) / multiplier;
+}
 app.get("/index", function(req,res){
     
     bucket.getFiles()
@@ -156,12 +160,11 @@ app.get("/index", function(req,res){
                                 console.log("An error occured");
                             }else{
                             admin.database().ref("/").update({"name":name})
-                            admin.database().ref("/").update({"calories":calories+" calories"})
-                            admin.database().ref("/").update({"calories":calories+" calories"})
-                            admin.database().ref("/").update({"sugar":sugar+" grams"})
-                            admin.database().ref("/").update({"fat":fat+" grams"})
-                            admin.database().ref("/").update({"sodium":sodium+" milligrams"})
-                            admin.database().ref("/").update({"protein":protein+" grams"})
+                            admin.database().ref("/").update({"calories":round(calories, 1)+" calories"})
+                            admin.database().ref("/").update({"sugar": round(sugar, 1)+" grams"})
+                            admin.database().ref("/").update({"fat": round(fat, 1)+" grams"})
+                            admin.database().ref("/").update({"sodium": round(sodium, 1)+" milligrams"})
+                            admin.database().ref("/").update({"protein": round(protein, 1)+" grams"})
 
                             
                              food.find({}, function(err, body){
