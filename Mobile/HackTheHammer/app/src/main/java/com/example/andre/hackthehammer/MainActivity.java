@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
     private DatabaseReference mDataBase;
     Uri photoURI = null;
     private ProgressDialog mProgress;
+    private ProgressDialog mAnalyzing;
 
     private Button takePictureButton;
     private ImageView imageView;
@@ -64,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
         mDataBase = FirebaseDatabase.getInstance().getReference();
 
         mProgress = new ProgressDialog(this);
+        mAnalyzing = new ProgressDialog(this);
 
         takePictureButton = (Button) findViewById(R.id.button_image);
         imageView = (ImageView) findViewById(R.id.imageview);
@@ -98,6 +100,7 @@ public class MainActivity extends AppCompatActivity {
                 String data = dataSnapshot.getValue(String.class);
                 if(imageView.getDrawable() != null){
                     name.setText(data);
+                    mAnalyzing.dismiss();
                 }else{
                     name.setText("None Selected");
                 }
@@ -218,6 +221,9 @@ public class MainActivity extends AppCompatActivity {
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                         Toast.makeText(MainActivity.this, "Upload Successful!", Toast.LENGTH_SHORT).show();
                         mProgress.dismiss();
+
+                        mAnalyzing.setMessage("Analyzing...");
+                        mAnalyzing.show();
 
                         Picasso.with(MainActivity.this).load(photoURI).fit().centerCrop().into(imageView);
                     }
