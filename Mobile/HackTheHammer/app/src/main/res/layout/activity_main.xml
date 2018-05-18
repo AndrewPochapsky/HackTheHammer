@@ -159,7 +159,7 @@
         android:layout_alignBottom="@+id/sodiumHeader"
         android:layout_alignStart="@+id/proteinValue"
         android:fontFamily="sans-serif-smallcaps"
-        android:text="9999"
+        android:text="9999 milligrams"
         android:textAlignment="center"
         android:textSize="24sp" />
 
