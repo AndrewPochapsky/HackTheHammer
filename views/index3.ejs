@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>TestForm</title>
+</head>
+<body>
+     
+    <% body.reverse().forEach(function(x){ %>
+    <h2><li><%= x.name %></li></h2>
+    <ul>
+         <li>Calories: <%= Math.round(x.calories * 10) / 10 %></li>
+         <li>Fat: <%= Math.round(x.fat * 10) / 10 %>g</li>
+         <li>Sugar: <%= Math.round(x.sugar * 10) / 10 %>g</li>
+         <li>Protein: <%= Math.round(x.protein * 10) / 10 %>g</li>
+         <li>Sodium: <%= Math.round(x.sodium * 10) / 10 %>mg</li>
+         <li>Time: <%= x.time %></li>
+    </ul>
+    <% }) %>
+   
+</body>
+</html>
